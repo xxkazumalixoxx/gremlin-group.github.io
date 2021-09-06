@@ -1,0 +1,39 @@
+---
+layout: default
+title: "Pessoas"
+permalink: /people/
+author_profile: true
+order: 2
+---
+
+<h1>Pessoas</h1>
+<h2>Pesquisadores</h2>
+{%- assign researchers = site.people | where:"category", "Researcher" | sort:"priority" -%}
+<ul class="people-list">
+{%- for person in researchers -%}
+    <li>
+        <span>{%- if person.degree -%}{{person.degree | append:" "}} {%- endif -%}{{person.name}}</span>
+        <span class="resume-link"><img src="../assets/icons/link.svg" alt="A round blue ball with a white chain shape inside"/><a href="{{person.lattes}}">Currículo</a></span>
+    </li>
+{%- endfor -%}
+</ul>
+<h2>Bolsistas</h2>
+{%- assign scholarship-holders = site.people | where:"category", "Scholarship" | sort:"priority" -%}
+<ul class="people-list">
+{%- for person in scholarship-holders -%}
+    <li>
+        <span>{%- if person.degree -%}{{person.degree | append:" "}} {%- endif -%}{{person.name}}</span>
+        <span class="resume-link"><img src="../assets/icons/link.svg" alt="A round blue ball with a white chain shape inside"/><a href="{{person.lattes}}">Currículo</a></span>
+    </li>
+{%- endfor -%}
+</ul>
+<h2>Voluntários</h2>
+{%- assign volunteers = site.people | where:"category", "Volunteer" | sort:"priority" -%}
+<ul class="people-list">
+{%- for person in volunteers -%}
+    <li>
+        <span>{%- if person.degree -%}{{person.degree | append:" "}} {%- endif -%}{{person.name}}</span>
+        <span class="resume-link"><img src="../assets/icons/link.svg" alt="A round blue ball with a white chain shape inside"/><a href="{{person.lattes}}">Currículo</a></span>
+    </li>
+{%- endfor -%}
+</ul>

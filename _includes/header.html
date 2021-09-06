@@ -1,0 +1,32 @@
+<header class="" role="banner">
+
+  <div class="wrapper">
+    {%- assign default_paths = site.pages | sort:"order" | map: "path" -%}
+    {%- assign page_paths = site.header_pages | default: default_paths -%}
+
+    {%- if page_paths -%}
+      <nav class="site-nav" id="sitenav">
+        <div class='logo' aria-label="site logo">
+          <img class="mush" src="{{site.baseurl}}/assets/icons/gizmo.png" alt="GREMLIN Logo">
+        </div>
+        <div class="menu-container">
+          <div class="hamburguer-btn" onclick="toggle()" tabindex="0" onkeypress="toogle()" aria-label="expansible">
+            Menu<img alt="three horizontal lines" src="/assets/icons/botao-de-menu.svg" class="menu-icon"/>
+          </div>
+          <div class="menu-links" id="menubar">
+            {%- for path in page_paths | sort:"order" -%}
+            {%- assign my_page = site.pages | where: "path", path | first -%}
+            {%- if my_page.title -%}
+              {%- if page.url == my_page.url -%}
+                <a class="page-link active" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+              {%- else -%}
+                <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+      </nav>
+    {%- endif -%}
+  </div>
+</header>
